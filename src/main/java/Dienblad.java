@@ -4,21 +4,28 @@ import java.util.Stack;
 
 public class Dienblad {
     private ArrayList<Artikel> artikelen;
-
+    private Persoon klant;
     /**
      * Constructor
      */
-    public Dienblad() {
+    public Dienblad(Persoon klant) {
         // method body omitted
+        this.klant = klant;
+    }
+    public Persoon getKlant() {
+        return klant;
     }
 
+    public void setKlant(Persoon klant) {
+        this.klant = klant;
+    }
     /**
      * Methode om artikel aan dienblad toe te voegen
      *
      * @param artikel
      */
     public void voegToe(Artikel artikel) {
-        // method body omitted
+        artikelen.add(artikel);
     }
 
     /**
@@ -27,7 +34,7 @@ public class Dienblad {
      * @return Het aantal artikelen
      */
     public int getAantalArtikelen() {
-        // method body omitted
+        return artikelen.size();
     }
 
     /**
@@ -36,7 +43,11 @@ public class Dienblad {
      * @return De totaalprijs
      */
     public double getTotaalPrijs() {
-        // method body omitted
+        double totaal = 0;
+        for(Artikel arti: artikelen)    {
+            totaal =+ arti.getPrijs();
+        }
+        return totaal;
     }
 }
 

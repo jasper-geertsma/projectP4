@@ -7,6 +7,10 @@ public class Artikel {
         this.prijs = prijs;
     }
 
+    /*
+    * Opgave 1
+    * De setters
+    */
     public void setNaam(String naam) {
         this.naam = naam;
     }
@@ -14,7 +18,9 @@ public class Artikel {
     public void setPrijs(int prijs){
         this.prijs = prijs;
     }
-
+    /*
+    * De getters
+     */
     public String getNaam() {
         return naam;
     }

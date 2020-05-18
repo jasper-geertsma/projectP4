@@ -1,25 +1,24 @@
 public class Persoon {
 
-
     private Datum d;
 
     private int BSN;
     private String voornaam;
     private String achternaam;
     private String geboortedatum;
-    private char geslacht;
+    private String geslacht;
     /*
      * Constructor
      *
      */
-    public Persoon(int bsn, String voornaam, String achternaam, int dag, int maand, int jaar , String geslacht) {
+    public Persoon(int bsn, String voornaam, String achternaam, int dag, int maand, int jaar , char geslachtkeuze) {
         d = new Datum(dag, maand, jaar);
 
         BSN = bsn;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = d.getDatumAsString();
-        this.geslacht = geslacht;
+        checkGeslacht(geslachtkeuze);
     }
 
     public Persoon(){
@@ -27,16 +26,35 @@ public class Persoon {
         voornaam = "Onbekend";
         achternaam = "Onbekend";
         geboortedatum = "Onbekend";
+        geslacht = "Onbekend";
     }
 
     /*
-    * Check voor geslacht
-    * */
-    public boolean checkGeslacht(String check){
-        if(check == "Man"){
-            geslacht = M;
+     * Check voor geslacht
+     * */
+    public boolean checkGeslacht(char check){
+        switch (check){
+            case 'm': case 'M' :
+                geslacht = "Man";
+                return true;
+
+            case 'f': case 'F':
+                geslacht = "Vrouw";
+                return true;
+
+            default:
+                geslacht = "onbekend";
+                break;
         }
         return false;
+    }
+
+    /*
+     * Methode toString
+     */
+    public String toString(){
+        String info = "BSN: " + BSN + "; Naam: " + voornaam + " " + achternaam + "; Geslacht: " + geslacht + "; geboortedatum: " + geboortedatum;
+        return info;
     }
 
     /*
@@ -64,9 +82,9 @@ public class Persoon {
     }
 
     /*
-    * Setters
-    *
-    */
+     * Setters
+     *
+     */
     public void setBSN(int BSN) {
         this.BSN = BSN;
     }

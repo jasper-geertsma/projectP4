@@ -24,7 +24,10 @@ public class Datum {
 		maand = 0;
 		jaar = 0;
 	}
-
+	/*
+	*	Deze methode controleert of de gegeven datum bestaat
+	*
+	 */
 	public boolean bestaatDatum(int d, int m, int j) {
 		// TODO
 		int dagen = 0;
@@ -94,6 +97,9 @@ public class Datum {
 		return jaar;
 	}
 
+	/*
+	*	Setters
+	 */
 	public void setDag(int d) {
 		dag = d;
 	}
