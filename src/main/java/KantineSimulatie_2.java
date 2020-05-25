@@ -127,18 +127,19 @@ public class KantineSimulatie_2 {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
-                kantine.loopPakSluitAan(persoon, artikelen);
+                kantine.loopPakSluitAan(klant, artikelen);
 
             }
 
             // verwerk rij voor de kassa
-
             // druk de dagtotalen af en hoeveel personen binnen
-
             // zijn gekomen
-
             // reset de kassa voor de volgende dag
-
+            kantine.verwerkRijVoorKassa();
+            Kassa kassa = kantine.getKassa();
+            System.out.println("Dag "+i+":");
+            System.out.println("Totaal artikelen: " + kassa.aantalArtikelen() + " Geld in kassa: " + kassa.hoeveelheidGeldInKassa());
+            kassa.resetKassa();
         }
     }
 }

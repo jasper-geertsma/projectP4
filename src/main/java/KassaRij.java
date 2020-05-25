@@ -8,6 +8,7 @@ public class KassaRij {
      */
     public KassaRij() {
         // method body omitted
+        rij = new LinkedList<>();
     }
 
     /**
@@ -42,7 +43,7 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        if(rij.size() != 0) {
+        if(rij.size() >= 1) {
             return true;
         }
         else {

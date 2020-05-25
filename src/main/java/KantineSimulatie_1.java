@@ -59,7 +59,7 @@ public class KantineSimulatie_1 {
         }
 
         System.out.println("het werkt");
-        KantineSimulatie_1 simulatie1 = new KantineSimulatie_1();
+        KantineSimulatie_2 simulatie1 = new KantineSimulatie_2();
         simulatie1.simuleer(dagen);
     }
 }
