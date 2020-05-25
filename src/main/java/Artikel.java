@@ -7,6 +7,11 @@ public class Artikel {
         this.prijs = prijs;
     }
 
+    public Artikel(){
+        this.naam = null;
+        this.prijs = 0.0;
+    }
+
     /*
     * Opgave 1
     * De setters
