@@ -1,8 +1,8 @@
 public class Artikel {
     private String naam;
-    private int prijs;
+    private double prijs;
 
-    public Artikel() {
+    public Artikel(String naam, double prijs) {
         this.naam = naam;
         this.prijs = prijs;
     }
@@ -15,7 +15,7 @@ public class Artikel {
         this.naam = naam;
     }
 
-    public void setPrijs(int prijs){
+    public void setPrijs(double prijs){
         this.prijs = prijs;
     }
     /*
@@ -25,7 +25,7 @@ public class Artikel {
         return naam;
     }
 
-    public int getPrijs() {
+    public double getPrijs() {
         return prijs;
     }
 }

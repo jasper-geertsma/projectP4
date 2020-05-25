@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class KantineSimulatie {
+public class KantineSimulatie_2 {
 
     // kantine
     private Kantine kantine;
@@ -37,7 +37,7 @@ public class KantineSimulatie {
      * Constructor
      *
      */
-    public KantineSimulatie() {
+    public KantineSimulatie_2() {
         kantine = new Kantine();
         random = new Random();
         int[] hoeveelheden =
@@ -105,18 +105,20 @@ public class KantineSimulatie {
         for(int i = 0; i < dagen; i++) {
 
             // bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen = ... ;
+            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
             for (int j = 0; j < aantalpersonen; j++) {
-
+                Persoon persoon = new Persoon(41077889, "Jasper", "Geertsma", 30,11,1999, 'M');
+                Dienblad klant = new Dienblad();
+                klant.setKlant(persoon);
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen = ... ;
+                int aantalartikelen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG) ;
 
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen
-                array int[] tepakken = getRandomArray(
+                int[] tepakken = getRandomArray(
                     aantalartikelen, 0, AANTAL_ARTIKELEN-1);
 
                 // vind de artikelnamen op basis van
@@ -125,6 +127,7 @@ public class KantineSimulatie {
 
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
+                kantine.loopPakSluitAan(persoon, artikelen);
 
             }
 

@@ -4,11 +4,14 @@ public class Kassa {
 
     private int totaalProducten;
     private double totaalGeld;
+    private KassaRij kassarij;
+    private Artikel artikel;
+
     /**
      * Constructor
      */
     public Kassa(KassaRij kassarij) {
-
+        this.kassarij = kassarij;
 
     }
 
@@ -21,8 +24,8 @@ public class Kassa {
      */
     public void rekenAf(Dienblad klant) {
 
-        totaalProducten += klant.getAantalArtikelen();
-        totaalGeld += klant.getTotaalPrijs();
+        totaalProducten += totaalArtikelenDienblad(klant);
+        totaalGeld += totaalPrijsDienblad(klant);
     }
 
 
@@ -53,5 +56,40 @@ public class Kassa {
     public void resetKassa() {
         totaalGeld = 0;
         totaalProducten = 0;
+    }
+
+    public int totaalArtikelenDienblad(Dienblad dienblad){
+        int totaal = 0;
+        if (dienblad.getIterator() == null) {
+            System.out.println("Het dienblad is leeg");
+            return totaal;
+        }
+
+        else{
+            Iterator<Artikel> it = dienblad.getIterator();
+            while (it.hasNext()) {
+                it.next();
+                totaal++;
+            }
+            return totaal;
+        }
+
+    }
+
+    public double totaalPrijsDienblad(Dienblad dienblad){
+        double totaal = 0.0;
+        if (dienblad.getIterator() == null) {
+            System.out.println("Het dienblad is leeg");
+            return totaal;
+        }
+
+        else{
+            Iterator<Artikel> it = dienblad.getIterator();
+            while (it.hasNext()) {
+                artikel = it.next();
+                totaal += artikel.getPrijs();
+            }
+            return totaal;
+        }
     }
 }

@@ -1,7 +1,7 @@
 public class Kantine {
-
     private Kassa kassa;
     private KassaRij kassarij;
+    private KantineAanbod kantineAanbod;
 
     /**
      * Constructor
@@ -9,6 +9,7 @@ public class Kantine {
     public Kantine() {
         kassarij = new KassaRij();
         kassa = new Kassa(kassarij);
+
     }
 
     /**
@@ -16,42 +17,33 @@ public class Kantine {
      * Artikelen aan en plaats deze op het dienblad. Tenslotte sluit de Persoon zich aan bij de rij
      * voor de kassa.
      */
-    public void loopPakSluitAan() {
-        // method body omitted
+    public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
+        for (String artikelnaam : artikelnamen){
+            dienblad.voegToe(kantineAanbod.getArtikel(artikelnaam));
+        }
+
+        kassarij.sluitAchteraan(dienblad);
     }
 
     /**
      * Deze methode handelt de rij voor de kassa af.
      */
     public void verwerkRijVoorKassa() {
-        while () {
-            // omitted
+        while (kassarij.erIsEenRij() == true) {
+            Dienblad klant = kassarij.eerstePersoonInRij();
+            kassa.rekenAf(klant);
         }
     }
 
-    /**
-     * Deze methode telt het geld uit de kassa
-     *
-     * @return hoeveelheid geld in kassa
-     */
-    public double hoeveelheidGeldInKassa() {
-        // method body omitted
+    public Kassa getKassa(){
+        return kassa;
     }
 
-    /**
-     * Deze methode geeft het aantal gepasseerde artikelen.
-     *
-     * @return het aantal gepasseerde artikelen
-     */
-    public int aantalArtikelen() {
-        // method body omitted
+    public void setKantineAanbod(KantineAanbod kantineAanbod) {
+        this.kantineAanbod = kantineAanbod;
     }
 
-    /**
-     * Deze methode reset de bijgehouden telling van het aantal artikelen en "leegt" de inhoud van
-     * de kassa.
-     */
-    public void resetKassa() {
-        // method body omitted
+    public KantineAanbod getKantineAanbod() {
+        return kantineAanbod;
     }
 }
