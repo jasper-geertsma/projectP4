@@ -26,8 +26,8 @@ public class KantineSimulatie_2 {
     private static final int MAX_ARTIKELEN_PER_SOORT = 20000;
 
     // minimum en maximum aantal personen per dag
-    private static final int MIN_PERSONEN_PER_DAG = 50;
-    private static final int MAX_PERSONEN_PER_DAG = 100;
+    private static final int MIN_PERSONEN_PER_DAG = 1;
+    private static final int MAX_PERSONEN_PER_DAG = 500;
 
     // minimum en maximum artikelen per persoon
     private static final int MIN_ARTIKELEN_PER_PERSOON = 1;
@@ -102,16 +102,30 @@ public class KantineSimulatie_2 {
      */
     public void simuleer(int dagen) {
         // for lus voor dagen
+        int[] dagTotaalArtikelen = new int[dagen];
+        double[] dagTotaalGeld = new double[dagen];
         for(int i = 0; i < dagen; i++) {
 
             // bedenk hoeveel personen vandaag binnen lopen
-            int aantalpersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
+            int aantalPersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 
             // laat de personen maar komen...
-            for (int j = 0; j < aantalpersonen; j++) {
-                Persoon persoon = new Persoon(41077889, "Jasper", "Geertsma", 30,11,1999, 'M');
+            
+            for (int j = 0; j < aantalPersonen; j++) {
+                int nieuwPersoon = getRandomValue(0, 100);
                 Dienblad klant = new Dienblad();
-                klant.setKlant(persoon);
+                if(nieuwPersoon <= 89){
+                    Student persoon = new Student(41077889,"Jasper", "Geertsma",30, 11, 1999, 'M', 1,"ICT");
+                    klant.setKlant(persoon);
+                }
+                if(nieuwPersoon > 89 && nieuwPersoon <= 99) {
+                    Docent persoon = new Docent(51078439, "Calvin", "Krafft",28,4,2000,'M',"kaft", "gayct");
+                    klant.setKlant(persoon);
+                }
+                else {
+                     KantineMedewerker persoon = new KantineMedewerker(911, "Daniel","Paars",  11,9,2001,'F', 911, true);
+                     klant.setKlant(persoon);
+                }
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
                 int aantalartikelen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG) ;
@@ -136,10 +150,15 @@ public class KantineSimulatie_2 {
             // zijn gekomen
             // reset de kassa voor de volgende dag
             kantine.verwerkRijVoorKassa();
+            
+                        
             Kassa kassa = kantine.getKassa();
+            dagTotaalArtikelen[i] = kassa.aantalArtikelen();
+            dagTotaalGeld[i] = kassa.hoeveelheidGeldInKassa();
             System.out.println("Dag "+i+":");
             System.out.println("Totaal artikelen: " + kassa.aantalArtikelen() + " Geld in kassa: " + kassa.hoeveelheidGeldInKassa());
             kassa.resetKassa();
         }
+        System.out.println("gemiddelden van de week; artikelen: "+ Administratie.berekenGemiddeldAantal(dagTotaalArtikelen) + ", geld: " + Administratie.berekenGemiddeldeOmzet(dagTotaalGeld) );
     }
 }

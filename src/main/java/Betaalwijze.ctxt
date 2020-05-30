@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Betaalwijze
+comment1.params=saldo
+comment1.target=void\ setSaldo(double)
+comment1.text=\r\n\ Methode\ om\ krediet\ te\ initialiseren\r\n\r\n\ @param\ saldo\r\n
+comment2.params=tebetalen
+comment2.target=boolean\ betaal(double)
+comment2.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n\r\n\ @param\ tebetalen\r\n\ @return\ Boolean\ om\ te\ kijken\ of\ er\ voldoende\ saldo\ is\r\n
+numComments=3

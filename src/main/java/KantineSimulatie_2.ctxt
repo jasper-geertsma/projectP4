@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=KantineSimulatie_2
+comment1.params=
+comment1.target=KantineSimulatie_2()
+comment1.text=\r\n\ Constructor\r\n\r\n
+comment2.params=lengte\ min\ max
+comment2.target=int[]\ getRandomArray(int,\ int,\ int)
+comment2.text=\r\n\ Methode\ om\ een\ array\ van\ random\ getallen\ liggend\ tussen\ min\ en\ max\ van\ de\ gegeven\ lengte\ te\r\n\ genereren\r\n\r\n\ @param\ lengte\r\n\ @param\ min\r\n\ @param\ max\r\n\ @return\ De\ array\ met\ random\ getallen\r\n
+comment3.params=min\ max
+comment3.target=int\ getRandomValue(int,\ int)
+comment3.text=\r\n\ Methode\ om\ een\ random\ getal\ tussen\ min(incl)\ en\ max(incl)\ te\ genereren.\r\n\r\n\ @param\ min\r\n\ @param\ max\r\n\ @return\ Een\ random\ getal\r\n
+comment4.params=indexen
+comment4.target=java.lang.String[]\ geefArtikelNamen(int[])
+comment4.text=\r\n\ Methode\ om\ op\ basis\ van\ een\ array\ van\ indexen\ voor\ de\ array\ artikelnamen\ de\ bijhorende\ array\r\n\ van\ artikelnamen\ te\ maken\r\n\r\n\ @param\ indexen\r\n\ @return\ De\ array\ met\ artikelnamen\r\n
+comment5.params=dagen
+comment5.target=void\ simuleer(int)
+comment5.text=\r\n\ Deze\ methode\ simuleert\ een\ aantal\ dagen\r\n\ in\ het\ verloop\ van\ de\ kantine\r\n\r\n\ @param\ dagen\r\n
+numComments=6

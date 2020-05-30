@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Contant
+comment1.params=tebetalen
+comment1.target=boolean\ betaal(double)
+comment1.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n
+numComments=2

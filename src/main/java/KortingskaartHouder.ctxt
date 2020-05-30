@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=KortingskaartHouder
+comment1.params=
+comment1.target=double\ geefKortingsPercentage()
+comment1.text=\r\n\ Methode\ om\ kortingspercentage\ op\ te\ vragen\r\n
+comment2.params=
+comment2.target=boolean\ heeftMaximum()
+comment2.text=\r\n\ Methode\ om\ op\ te\ vragen\ of\ er\ maximum\ per\ keer\ aan\ de\ korting\ zit\r\n
+comment3.params=
+comment3.target=double\ geefMaximum()
+comment3.text=\r\n\ Methode\ om\ het\ maximum\ kortingsbedrag\ op\ te\ vragen\r\n
+numComments=4

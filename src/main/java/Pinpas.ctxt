@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Pinpas
+comment1.params=kredietlimiet
+comment1.target=void\ setKredietLimiet(double)
+comment1.text=\r\n\ Methode\ om\ kredietlimiet\ te\ zetten\r\n\r\n\ @param\ kredietlimiet\r\n
+comment2.params=tebetalen
+comment2.target=boolean\ betaal(double)
+comment2.text=\r\n\ Methode\ om\ betaling\ af\ te\ handelen\r\n
+numComments=3

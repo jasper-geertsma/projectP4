@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Dienblad
+comment1.params=klant
+comment1.target=Dienblad(Persoon)
+comment1.text=\r\n\ Constructor\r\n
+comment2.params=
+comment2.target=Dienblad()
+comment3.params=
+comment3.target=Persoon\ getKlant()
+comment4.params=klant
+comment4.target=void\ setKlant(Persoon)
+comment5.params=artikel
+comment5.target=void\ voegToe(Artikel)
+comment5.text=\r\n\ Methode\ om\ artikel\ aan\ dienblad\ toe\ te\ voegen\r\n\r\n\ @param\ artikel\r\n
+comment6.params=
+comment6.target=java.util.Iterator\ getIterator()
+numComments=7

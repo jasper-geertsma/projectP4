@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Docent
+comment0.text=\r\n\ class\ Docent\ -\ geef\ hier\ een\ beschrijving\ van\ deze\ class\r\n\r\n\ @author\ (jouw\ naam)\r\n\ @version\ (versie\ nummer\ of\ datum)\r\n
+comment1.params=bsn\ voornaam\ achternaam\ dag\ maand\ jaar\ geslachtkeuze\ afkorting\ afdeling
+comment1.target=Docent(int,\ java.lang.String,\ java.lang.String,\ int,\ int,\ int,\ char,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ voor\ objects\ van\ class\ Docent\r\n
+numComments=2

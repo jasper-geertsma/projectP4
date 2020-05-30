@@ -1,14 +1,28 @@
-public class Administratie {
-
+public class Administratie {    
+    
+    private static final int DAYS_IN_WEEK = 7;
     /**
      * Deze methode berekent van de int array aantal de gemiddelde waarde
      *
      * @param aantal
      * @return het gemiddelde
      */
-    public double berekenGemiddeldAantal(int[] aantal) {
-        // method body omitted
-        return 0.0;
+    private Administratie() {
+    }
+    
+    public static double berekenGemiddeldAantal(int[] aantal) {
+        if(aantal.length == 0) {
+            return 0;
+        }
+        double gemiddelde = 0;
+        for(int totaal: aantal) {
+            gemiddelde += totaal;
+        }
+        if(gemiddelde == 0) {
+            return 0;
+        }
+        gemiddelde = gemiddelde / aantal.length;
+        return gemiddelde;
     }
 
     /**
@@ -17,9 +31,18 @@ public class Administratie {
      * @param omzet
      * @return het gemiddelde
      */
-    public double berekenGemiddeldeOmzet(double[] omzet) {
-        // method body omitted
-        return 0;
+    public static double berekenGemiddeldeOmzet(double[] omzet) {
+        if(omzet.length == 0) {
+            return 0;
+        } 
+        double gemiddelde = 0;
+        for(double totaal: omzet) {
+            gemiddelde =+ totaal;
+        }
+        if(gemiddelde == 0) {
+            return 0;
+        }
+        return gemiddelde /= omzet.length;
     }
 
     /**
@@ -29,18 +52,15 @@ public class Administratie {
      * @return array (7 elementen) met dagomzetten
      */
 
-   /* public static double[] berekenDagOmzet(double[] omzet) {
-        double[] temp = new double[7];
-        for(int i = 0; i < 7; i++) {
-
+    public static double[] berekenDagOmzet(double[] omzet) {
+        double[] temp = new double[DAYS_IN_WEEK];
+        for(int i = 0; i < DAYS_IN_WEEK; i++) {
             int j = 0;
-            while ( ... ) {
-                temp[i] += omzet[i + 7 * j];
-
-                // omitted
-
+            while(omzet.length > i + DAYS_IN_WEEK * j) {
+                temp[i] += omzet[i + DAYS_IN_WEEK * j];
+                j++;
            }
         }
         return temp;
-    }*/
+    }
 }

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=KantineAanbod
+comment1.params=artikelnaam\ prijs\ hoeveelheid
+comment1.target=KantineAanbod(java.lang.String[],\ double[],\ int[])
+comment1.text=\r\n\ Constructor.\ Het\ eerste\ argument\ is\ een\ lijst\ met\ artikelnamen,\ het\ tweede\ argument\ is\r\n\ eenlijst\ met\ prijzen\ en\ het\ derde\ argument\ is\ een\ lijst\ met\ hoeveelheden.\ Let\ op\:\ de\r\n\ dimensies\ van\ de\ drie\ arrays\ moeten\ wel\ gelijk\ zijn\!\r\n
+comment2.params=productnaam
+comment2.target=void\ vulVoorraadAan(java.lang.String)
+comment3.params=productnaam
+comment3.target=java.util.ArrayList\ getArrayList(java.lang.String)
+comment3.text=\r\n\ Private\ methode\ om\ de\ lijst\ van\ artikelen\ te\ krijgen\ op\ basis\ van\ de\ naam\ van\ het\ artikel.\r\n\ Retourneert\ null\ als\ artikel\ niet\ bestaat.\r\n
+comment4.params=stapel
+comment4.target=Artikel\ getArtikel(java.util.ArrayList)
+comment4.text=\r\n\ Private\ methode\ om\ een\ Artikel\ van\ de\ stapel\ artikelen\ af\ te\ pakken.\ Retourneert\ null\ als\ de\r\n\ stapel\ leeg\ is.\r\n
+comment5.params=productnaam
+comment5.target=Artikel\ getArtikel(java.lang.String)
+comment5.text=\r\n\ Publieke\ methode\ om\ een\ artikel\ via\ naam\ van\ de\ stapel\ te\ pakken.\ Retouneert\ null\ als\ artikel\r\n\ niet\ bestaat\ of\ niet\ op\ voorraad\ is.\r\n\r\n\ @param\ productnaam\ (van\ artikel)\r\n\ @return\ artikel\ (of\ null)\r\n
+numComments=6

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=KassaRij
+comment1.params=
+comment1.target=KassaRij()
+comment1.text=\r\n\ Constructor\r\n
+comment2.params=klant
+comment2.target=void\ sluitAchteraan(Dienblad)
+comment2.text=\r\n\ Persoon\ sluit\ achter\ in\ de\ rij\ aan\r\n\r\n\ @param\ klant\r\n
+comment3.params=
+comment3.target=Dienblad\ eerstePersoonInRij()
+comment3.text=\r\n\ Indien\ er\ een\ rij\ bestaat,\ de\ eerste\ klant\ uit\ de\ rij\ verwijderen\ en\ retourneren.\ Als\ er\r\n\ niemand\ in\ de\ rij\ staat\ geeft\ deze\ null\ terug.\r\n\r\n\ @return\ Eerste\ klant\ in\ de\ rij\ of\ null\r\n
+comment4.params=
+comment4.target=boolean\ erIsEenRij()
+comment4.text=\r\n\ Methode\ kijkt\ of\ er\ personen\ in\ de\ rij\ staan.\r\n\r\n\ @return\ Of\ er\ wel\ of\ geen\ rij\ bestaat\r\n
+numComments=5

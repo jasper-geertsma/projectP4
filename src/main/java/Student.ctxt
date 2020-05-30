@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Student
+comment0.text=\r\n\ class\ Student\ -\ geef\ hier\ een\ beschrijving\ van\ deze\ class\r\n\r\n\ @author\ (jouw\ naam)\r\n\ @version\ (versie\ nummer\ of\ datum)\r\n
+comment1.params=bsn\ voornaam\ achternaam\ dag\ maand\ jaar\ geslachtkeuze\ studentNummer\ studieRichting
+comment1.target=Student(int,\ java.lang.String,\ java.lang.String,\ int,\ int,\ int,\ char,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ voor\ objects\ van\ class\ Student\r\n
+numComments=2
