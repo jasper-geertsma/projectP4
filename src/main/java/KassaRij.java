@@ -17,7 +17,7 @@ public class KassaRij {
      * @param klant
      */
     public void sluitAchteraan(Dienblad klant) {
-        rij.add(klant);
+        rij.addLast(klant);
     }
 
     /**
@@ -28,8 +28,8 @@ public class KassaRij {
      */
     public Dienblad eerstePersoonInRij() {
         if(rij.size() != 0) {
-            Dienblad klant = rij.get(0);
-            rij.remove(0);
+            Dienblad klant = rij.getFirst();
+            rij.removeFirst();
             return klant;
         }
         else {

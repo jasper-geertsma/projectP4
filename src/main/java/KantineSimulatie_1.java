@@ -58,7 +58,6 @@ public class KantineSimulatie_1 {
             dagen = Integer.parseInt(args[0]);
         }
 
-        System.out.println("het werkt");
         KantineSimulatie_2 simulatie1 = new KantineSimulatie_2();
         simulatie1.simuleer(dagen);
     }
