@@ -52,6 +52,7 @@ public class Persoon {
     /*
      * Methode toString
      */
+    @Override
     public String toString(){
         String info = "BSN: " + BSN + "; Naam: " + voornaam + " " + achternaam + "; Geslacht: " + geslacht + "; geboortedatum: " + geboortedatum;
         return info;
