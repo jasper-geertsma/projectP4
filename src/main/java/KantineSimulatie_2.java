@@ -126,7 +126,7 @@ public class KantineSimulatie_2 {
                     //System.out.println("Student: " + persoon);
                 }
                 else if(nieuwPersoon < 99) {
-                    Docent persoon = new Docent(51078439, "Calvin", "Krafft",28,4,2000,'M',"kaft", "gayct");
+                    Docent persoon = new Docent(51078439, "Calvin", "Krafft",28,4,2000,'M',"kaft", "ICT");
                     klant.setKlant(persoon);
                     docent++;
                     //System.out.println("Docent: " + persoon);
@@ -178,10 +178,8 @@ public class KantineSimulatie_2 {
     }
 
     public static void main(String[] args) {
-        
-        
-        int dagen;
 
+        int dagen;
         if (args.length == 0) {
             dagen = DAGEN;
         } else {
