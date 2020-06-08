@@ -1,5 +1,4 @@
 public interface KortingskaartHouder {
-
     /**
      * Methode om kortingspercentage op te vragen
      */

@@ -9,13 +9,20 @@ public class Pinpas extends Betaalwijze {
      */
     public void setKredietLimiet(double kredietlimiet) {
         // method body omitted
+        this.kredietlimiet = kredietlimiet;
     }
 
     /**
      * Methode om betaling af te handelen
      */
-    public boolean betaal(double tebetalen) {
+    public void betaal(double tebetalen) throws TeWeinigGeldException {
         // method body omitted
-        return false;
+        if (saldo >= tebetalen){
+            setSaldo(saldo - tebetalen);
+        }
+        else {
+            throw new TeWeinigGeldException("je hebt te weinig geld");
+        }
     }
+
 }

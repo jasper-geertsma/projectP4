@@ -15,4 +15,6 @@ comment4.text=\r\n\ Methode\ om\ op\ basis\ van\ een\ array\ van\ indexen\ voor\
 comment5.params=dagen
 comment5.target=void\ simuleer(int)
 comment5.text=\r\n\ Deze\ methode\ simuleert\ een\ aantal\ dagen\r\n\ in\ het\ verloop\ van\ de\ kantine\r\n\r\n\ @param\ dagen\r\n
-numComments=6
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+numComments=7

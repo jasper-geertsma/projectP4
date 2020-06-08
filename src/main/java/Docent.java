@@ -5,11 +5,11 @@
  * @author (jouw naam)
  * @version (versie nummer of datum)
  */
-public class Docent extends Persoon
+public class Docent extends Persoon implements KortingskaartHouder
 {
     // instance variables - vervang deze door jouw variabelen
-    String afkorting;
-    String afdeling;
+    private String afkorting;
+    private String afdeling;
     /**
      * Constructor voor objects van class Docent
      */
@@ -20,4 +20,39 @@ public class Docent extends Persoon
          this.afdeling = afdeling;
  
     }
+    
+    /*
+     * Setters
+     */
+    public void setAfdeling(String afdeling){
+        this.afdeling = afdeling;
+    }
+    
+    public void setAfkorting(String afkorting){
+        this.afkorting = afkorting;
+    }
+    
+    /*
+     * Getters
+     */
+    public String getAfdeling(){
+        return afdeling;
+    }
+    
+    public String getAfkorting(){
+        return afkorting;
+    }
+    
+    public double geefKortingsPercentage() {
+        return 25.0;
+    }
+
+
+    public boolean heeftMaximum() {
+        return true;
+    }
+
+    public double geefMaximum() {
+        return 1.0;
+    }    
 }

@@ -118,28 +118,38 @@ public class KantineSimulatie_2 {
             for (int j = 0; j < aantalPersonen; j++) {
                 int nieuwPersoon = random.nextInt(100);
                 Dienblad klant = new Dienblad();
+                Persoon persoon = null;
+
 
                 if(nieuwPersoon < 89){
-                    Student persoon = new Student(41077889,"Jasper", "Geertsma",30, 11, 1999, 'M', 1,"ICT");
+                    persoon = new Student(41077889,"Jasper", "Geertsma",30, 11, 1999, 'M', 1,"ICT");
+                    
                     klant.setKlant(persoon);
                     student++;
+                    System.out.println();
                     //System.out.println("Student: " + persoon);
                 }
                 else if(nieuwPersoon < 99) {
-                    Docent persoon = new Docent(51078439, "Calvin", "Krafft",28,4,2000,'M',"kaft", "ICT");
+                    persoon = new Docent(51078439, "Calvin", "Krafft",28,4,2000,'M',"kaft", "ICT");
+                    
                     klant.setKlant(persoon);
                     docent++;
                     //System.out.println("Docent: " + persoon);
                 }
-                else if(nieuwPersoon < 100) {
-                    KantineMedewerker persoon = new KantineMedewerker(911, "Daniel","Paars",  11,9,2001,'F', 911, true);
+                else {
+                    persoon = new KantineMedewerker(911, "Daniel","Paars",  11,9,2001,'F', 911, true);
+                    
                     klant.setKlant(persoon);
                     kantineMed++;
                     //System.out.println("Kantinemedewerker: " + persoon);
                 }
+
+                persoon.setBetaalwijze(new Contant());
+                persoon.getBetaalwijze().setSaldo(50);
+
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
-                int aantalartikelen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG) ;
+                int aantalartikelen = getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON) ;
 
                 // genereer de "artikelnummers", dit zijn indexen
                 // van de artikelnamen

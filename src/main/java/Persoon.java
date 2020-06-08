@@ -7,6 +7,7 @@ public class Persoon {
     private String achternaam;
     private String geboortedatum;
     private String geslacht;
+    private Betaalwijze betaalwijze;
     /*
      * Constructor
      *
@@ -81,6 +82,10 @@ public class Persoon {
     public String getGeslacht() {
         return geslacht;
     }
+    
+    public Betaalwijze getBetaalwijze() {
+        return betaalwijze;
+    }
 
     /*
      * Setters
@@ -101,5 +106,9 @@ public class Persoon {
 
     public void setGeslacht(char check) {
         checkGeslacht(check);
+    }
+    
+    public void setBetaalwijze(Betaalwijze manier){
+        this.betaalwijze = manier;
     }
 }

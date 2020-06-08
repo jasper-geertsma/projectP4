@@ -23,9 +23,42 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
+        Persoon persoon = klant.getKlant();
+        Betaalwijze betaalwijze = persoon.getBetaalwijze();
+        double teBetalen = totaalPrijsDienblad(klant);
+        
+        if(persoon instanceof KortingskaartHouder){
+            double korting = teBetalen * (((KortingskaartHouder)persoon).geefKortingsPercentage() * 0.01);
+            if(((KortingskaartHouder)persoon).heeftMaximum()){
+                if(korting > ((KortingskaartHouder)persoon).geefMaximum()){
+                    korting = ((KortingskaartHouder)persoon).geefMaximum();
+                }
+            }
+            teBetalen -= korting;
+        }
+        
 
-        totaalProducten += totaalArtikelenDienblad(klant);
-        totaalGeld += totaalPrijsDienblad(klant);
+         if(betaalwijze != null) {
+             try{
+                 if(persoon.getBetaalwijze() instanceof Pinpas) {
+                     Pinpas p = (Pinpas) persoon.getBetaalwijze();
+                     p.betaal(teBetalen);
+                 } else if (persoon.getBetaalwijze() instanceof Contant) {
+                     Contant c = (Contant) persoon.getBetaalwijze();
+                     c.betaal(teBetalen);
+                 }
+                 totaalProducten += totaalArtikelenDienblad(klant);
+                 totaalGeld += totaalPrijsDienblad(klant);
+                 System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " heeft betaald.");
+             }
+             catch(TeWeinigGeldException e){
+                 System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " Heeft niet genoeg geld");
+             }
+
+        } else{
+            System.out.println("Selecteer AUB een betaalwijze");
+        }
+
     }
 
 
@@ -91,5 +124,8 @@ public class Kassa {
             }
             return totaal;
         }
+        
     }
+    
+    
 }
