@@ -145,7 +145,7 @@ public class KantineSimulatie_2 {
                 }
 
                 persoon.setBetaalwijze(new Contant());
-                persoon.getBetaalwijze().setSaldo(50);
+                persoon.getBetaalwijze().setSaldo(random.nextInt(17));
 
                 // maak persoon en dienblad aan, koppel ze
                 // en bedenk hoeveel artikelen worden gepakt
