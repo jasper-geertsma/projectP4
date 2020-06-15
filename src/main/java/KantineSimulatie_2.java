@@ -181,6 +181,16 @@ public class KantineSimulatie_2 {
                 // artikelen, sluit aan
                 kantine.loopPakSluitAan(klant, artikelen);
 
+                for (int y =0; y < klant.getAantalArtikelen();) {
+                    Artikel a = klant.artikelen.get(y);
+                    if (a.getNaam().equals(dagAanbieding)) {
+                        a.setKorting(a.getPrijs() / 100.0d * KORTINGS_PERCENTAGE);
+                        double nieuwePrijs = a.getPrijs() - a.getKorting();
+                        a.setPrijs(nieuwePrijs);
+                        System.out.println(a.getNaam() + ": " + String.format("€%.2f", a.getPrijs()));
+                    }
+                    y++;
+                }
             }
 
             // verwerk rij voor de kassa

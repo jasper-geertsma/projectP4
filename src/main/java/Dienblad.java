@@ -3,8 +3,8 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class Dienblad {
-    private Stack<Artikel> artikelen;
-    private Persoon klant;
+    protected Stack<Artikel> artikelen;
+    protected Persoon klant;
     /**
      * Constructor
      */
@@ -42,6 +42,8 @@ public class Dienblad {
     public Stack<Artikel> getArtikelen (){
         return artikelen;
     }
+
+    public int getAantalArtikelen() {return artikelen.size();}
 
 }
 
