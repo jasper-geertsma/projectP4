@@ -39,5 +39,9 @@ public class Dienblad {
         return artikelen.iterator();
     }
 
+    public Stack<Artikel> getArtikelen (){
+        return artikelen;
+    }
+
 }
 

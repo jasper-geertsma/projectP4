@@ -1,6 +1,7 @@
 public class Artikel {
     private String naam;
     private double prijs;
+    private int korting;
 
     public Artikel(String naam, double prijs) {
         this.naam = naam;
@@ -10,7 +11,10 @@ public class Artikel {
     public Artikel(){
         this.naam = null;
         this.prijs = 0.0;
+        this.korting = 0;
     }
+
+
 
     /*
     * Opgave 1
@@ -23,6 +27,8 @@ public class Artikel {
     public void setPrijs(double prijs){
         this.prijs = prijs;
     }
+
+    public int getKorting() {return korting; }
     /*
     * De getters
      */
@@ -33,4 +39,6 @@ public class Artikel {
     public double getPrijs() {
         return prijs;
     }
+
+    public void setKorting(int korting) {this.korting = korting;}
 }

@@ -1,8 +1,9 @@
 import java.util.*;
+
+import java.util.Arrays;
 import javax.persistence.Persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
 
 public class KantineSimulatie_2 {
 
@@ -18,8 +19,13 @@ public class KantineSimulatie_2 {
     // random generator
     private Random random;
 
+    private String dagAanbieding;
+
     // aantal artikelen
     private static final int AANTAL_ARTIKELEN = 4;
+
+    // Kortings percentage
+    private static final double KORTINGS_PERCENTAGE = 20.0d;
 
     // artikelen
     private static final String[] artikelnamen =
@@ -48,6 +54,7 @@ public class KantineSimulatie_2 {
     public KantineSimulatie_2() {
         kantine = new Kantine();
         random = new Random();
+        String DagAanbieding= "";
         int[] hoeveelheden =
             getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
         kantineaanbod = new KantineAanbod(artikelnamen, artikelprijzen, hoeveelheden);
@@ -119,6 +126,9 @@ public class KantineSimulatie_2 {
             int kantineMed = 0;
             // bedenk hoeveel personen vandaag binnen lopen
             int aantalPersonen = getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
+
+            // Kies een random dagaanbieding
+            dagAanbieding = artikelnamen[getRandomValue(0, artikelnamen.length-1)];
 
             // laat de personen maar komen...
 
