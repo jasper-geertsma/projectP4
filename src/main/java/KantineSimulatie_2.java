@@ -1,7 +1,13 @@
 import java.util.*;
-import java.text.DecimalFormat;
+import javax.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 
 public class KantineSimulatie_2 {
+
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
 
     // kantine
     private Kantine kantine;
@@ -103,6 +109,7 @@ public class KantineSimulatie_2 {
      * @param dagen
      */
     public void simuleer(int dagen) {
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
         // for lus voor dagen
         int[] dagTotaalArtikelen = new int[dagen];
         double[] dagTotaalGeld = new double[dagen];
@@ -185,6 +192,9 @@ public class KantineSimulatie_2 {
         System.out.println("\nWekelijkse totalen: \n" + "\nDag omzet elke dag: " + Arrays.toString(Administratie.berekenDagOmzet(dagTotaalGeld)) + "\n");        
         System.out.println("gemiddelde artikelen van de week: " + String.format("$%.2f", Administratie.berekenGemiddeldAantal(dagTotaalArtikelen)) + "\n"); 
         System.out.println("gemiddelde omzet van de week: "+ String.format("$%.2f", Administratie.berekenGemiddeldeOmzet(dagTotaalGeld)));
+
+        manager.close();
+        ENTITY_MANAGER_FACTORY.close();
     }
 
     public static void main(String[] args) {
