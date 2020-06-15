@@ -26,6 +26,11 @@ public class Kassa {
         Persoon persoon = klant.getKlant();
         Betaalwijze betaalwijze = persoon.getBetaalwijze();
         double teBetalen = totaalPrijsDienblad(klant);
+
+        double kortingDagaanbiedingen = 0.0d;
+        double totaalPrijsArtikelen = 0.0d;
+        int aantalArtikelen = 0;
+
         
         if(persoon instanceof KortingskaartHouder){
             double korting = teBetalen * (((KortingskaartHouder)persoon).geefKortingsPercentage() * 0.01);
@@ -34,7 +39,15 @@ public class Kassa {
                     korting = ((KortingskaartHouder)persoon).geefMaximum();
                 }
             }
-            teBetalen -= korting;
+            //teBetalen -= korting;
+            // Bereken de totaalprijs van de artikelen
+            for (int y =0; y < klant.getAantalArtikelen();) {
+                Artikel a = klant.artikelen.get(y);
+                if(artikel.getKorting() != 0){
+                    double nieuwePrijs = (artikel.getPrijs() / 100) + artikel.getKorting();
+                }
+                y++;
+            }
         }
         
 

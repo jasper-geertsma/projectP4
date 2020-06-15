@@ -180,6 +180,7 @@ public class KantineSimulatie_2 {
                 // loop de kantine binnen, pak de gewenste
                 // artikelen, sluit aan
                 kantine.loopPakSluitAan(klant, artikelen);
+                System.out.println(Arrays.toString(artikelen));
 
                 for (int y =0; y < klant.getAantalArtikelen();) {
                     Artikel a = klant.artikelen.get(y);
