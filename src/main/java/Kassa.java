@@ -30,7 +30,7 @@ public class Kassa {
         double kortingDagaanbiedingen = 0.0d;
         double totaalPrijsArtikelen = 0.0d;
         int aantalArtikelen = 0;
-
+//dsd
         
         if(persoon instanceof KortingskaartHouder){
             double korting = teBetalen * (((KortingskaartHouder)persoon).geefKortingsPercentage() * 0.01);
