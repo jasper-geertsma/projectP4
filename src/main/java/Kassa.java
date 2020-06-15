@@ -25,7 +25,7 @@ public class Kassa {
     public void rekenAf(Dienblad klant) {
         Persoon persoon = klant.getKlant();
         Betaalwijze betaalwijze = persoon.getBetaalwijze();
-        double teBetalen = totaalPrijsDienblad(klant);
+        double teBetalen = 0.0;
 
         double kortingDagaanbiedingen = 0.0d;
         double totaalPrijsArtikelen = 0.0d;
@@ -39,15 +39,18 @@ public class Kassa {
                     korting = ((KortingskaartHouder)persoon).geefMaximum();
                 }
             }
+            korting = 100 + korting;
             //teBetalen -= korting;
             // Bereken de totaalprijs van de artikelen
             for (int y =0; y < klant.getAantalArtikelen();) {
                 Artikel a = klant.artikelen.get(y);
                 if(artikel.getKorting() != 0){
-                    double nieuwePrijs = (artikel.getPrijs() / 100) + artikel.getKorting();
+                    double nieuwePrijs = (artikel.getPrijs() / 100) + korting;
                 }
                 y++;
             }
+            teBetalen = totaalPrijsDienblad(klant);
+
         }
         
 
