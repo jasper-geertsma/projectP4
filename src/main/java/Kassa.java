@@ -4,7 +4,7 @@ public class Kassa {
 
     private int totaalProducten;
     private double totaalGeld;
-    private KassaRij kassarij;
+    private final KassaRij kassarij;
     private Artikel artikel;
 
     /**
@@ -12,7 +12,6 @@ public class Kassa {
      */
     public Kassa(KassaRij kassarij) {
         this.kassarij = kassarij;
-
     }
 
     /**
@@ -24,45 +23,11 @@ public class Kassa {
      */
     public void rekenAf(Dienblad klant) {
         Persoon persoon = klant.getKlant();
-        Betaalwijze betaalwijze = persoon.getBetaalwijze();
-        double teBetalen = 0.0;
 
-        double kortingDagaanbiedingen = 0.0d;
-        double totaalPrijsArtikelen = 0.0d;
-        int aantalArtikelen = 0;
-//dsd
-        
-        if(persoon instanceof KortingskaartHouder){
-            double korting = teBetalen * (((KortingskaartHouder)persoon).geefKortingsPercentage() * 0.01);
-            if(((KortingskaartHouder)persoon).heeftMaximum()){
-                if(korting > ((KortingskaartHouder)persoon).geefMaximum()){
-                    korting = ((KortingskaartHouder)persoon).geefMaximum();
-                }
-            }
-            korting = 100 + korting;
-            //teBetalen -= korting;
-            // Bereken de totaalprijs van de artikelen
-            for (int y =0; y < klant.getAantalArtikelen();) {
-                Artikel a = klant.artikelen.get(y);
-                if(artikel.getKorting() != 0){
-                    double nieuwePrijs = (artikel.getPrijs() / 100) + korting;
-                }
-                y++;
-            }
-            teBetalen = totaalPrijsDienblad(klant);
-
-        }
-        
-
-         if(betaalwijze != null) {
+         if(persoon.getBetaalwijze() != null) {
              try{
-                 if(persoon.getBetaalwijze() instanceof Pinpas) {
-                     Pinpas p = (Pinpas) persoon.getBetaalwijze();
-                     p.betaal(teBetalen);
-                 } else if (persoon.getBetaalwijze() instanceof Contant) {
-                     Contant c = (Contant) persoon.getBetaalwijze();
-                     c.betaal(teBetalen);
-                 }
+                 persoon.getBetaalwijze().betaal(teBetalen);
+
                  totaalProducten += totaalArtikelenDienblad(klant);
                  totaalGeld += totaalPrijsDienblad(klant);
                  System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " heeft betaald.");
@@ -74,8 +39,10 @@ public class Kassa {
         } else{
             System.out.println("Selecteer AUB een betaalwijze");
         }
-
     }
+
+
+
 
 
     /**
