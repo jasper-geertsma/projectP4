@@ -1,6 +1,11 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 public class KantineSimulatie_1 {
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("KantineSimulatie");
+    private EntityManager manager;
 
-    private Kantine kantine;
+    private final Kantine kantine;
 
     public static final int DAGEN = 7;
 
@@ -8,7 +13,7 @@ public class KantineSimulatie_1 {
      * Constructor
      */
     public KantineSimulatie_1() {
-        kantine = new Kantine();
+        kantine = new Kantine(manager);
     }
 
     /**

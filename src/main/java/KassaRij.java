@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class KassaRij {
-    private LinkedList<Dienblad> rij;
+    private final LinkedList<Dienblad> rij;
     /**
      * Constructor
      */
@@ -27,7 +27,7 @@ public class KassaRij {
      * @return Eerste klant in de rij of null
      */
     public Dienblad eerstePersoonInRij() {
-        if(rij.size() != 0) {
+        if(erIsEenRij()) {
             Dienblad klant = rij.getFirst();
             rij.removeFirst();
             return klant;
@@ -43,11 +43,10 @@ public class KassaRij {
      * @return Of er wel of geen rij bestaat
      */
     public boolean erIsEenRij() {
-        if(rij.size() >= 1) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return rij.size() >= 1;
+    }
+
+    public void afgerondeKlant(Dienblad klant){
+        rij.remove(klant);
     }
 }

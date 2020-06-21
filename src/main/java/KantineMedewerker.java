@@ -7,7 +7,7 @@
  */
 public class KantineMedewerker extends Persoon implements KortingskaartHouder
 {
-    private boolean kassa;
+    private final boolean kassa;
     private int medewerkersNummer;
 
     

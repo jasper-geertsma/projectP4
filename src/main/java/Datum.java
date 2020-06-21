@@ -9,7 +9,7 @@ public class Datum {
 	 */
 	// TODO
 	public Datum(int d, int m, int j){
-		if(bestaatDatum(d, m, j) == true) {
+		if(bestaatDatum(d, m, j)) {
 			dag = d;
 			maand = m;
 			jaar = j;
@@ -57,8 +57,7 @@ public class Datum {
 
 			if (d >= 1 && d <= dagen) {
 
-				if (j >= 1900 && j <= 2100) {
-					return true;}
+                return j >= 1900 && j <= 2100;
 			}
 		}
 
@@ -74,7 +73,7 @@ public class Datum {
 		// TODO
 		String datumString = "";
 
-		if(bestaatDatum(dag, maand, jaar) == true) {
+		if(bestaatDatum(dag, maand, jaar)) {
 			datumString = dag+"-"+maand+"-"+jaar;
 		}
 		else {

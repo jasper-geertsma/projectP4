@@ -1,10 +1,13 @@
 import java.util.*;
 
 public class KantineAanbod {
+    // Kortings percentage
+    private static final double KORTINGS_PERCENTAGE = 20.0d;
     // interne opslag voorraad
     private HashMap<String, ArrayList<Artikel>> aanbod;
     private HashMap<String, Integer> startVoorraad;
     private HashMap<String, Double> prijzen;
+    private String dagAanbieding;
 
     /**
      * Constructor. Het eerste argument is een lijst met artikelnamen, het tweede argument is
@@ -24,6 +27,7 @@ public class KantineAanbod {
             prijzen.put(artikelnaam[i], prijs[i]);
             aanbod.put(artikelnaam[i], artikelen);
         }
+        dagAanbieding = "";
     }
 
     private void vulVoorraadAan(String productnaam) {
@@ -60,6 +64,12 @@ public class KantineAanbod {
             stapel.remove(0);
             if (stapel.size() <= 10)
                 vulVoorraadAan(a.getNaam());
+
+            // Check of het gepakte artikel in de aanbieding is en set de korting
+            if (a.getNaam().equals(dagAanbieding)) {
+                a.setKorting(a.getPrijs() / 100.0d * KORTINGS_PERCENTAGE);
+            }
+
             return a;
         }
     }
@@ -73,5 +83,9 @@ public class KantineAanbod {
      */
     public Artikel getArtikel(String productnaam) {
         return getArtikel(getArrayList(productnaam));
+    }
+
+    public void setDagAanbieding(String dagAanbieding) {
+        this.dagAanbieding = dagAanbieding;
     }
 }

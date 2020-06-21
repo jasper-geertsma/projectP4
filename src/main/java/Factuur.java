@@ -1,26 +1,43 @@
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Entity
+@Table(name = "factuur")
+
 public class Factuur implements Serializable {
+
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Column(name = "datum", nullable = false)
     private LocalDate datum;
+
+    @Column(name = "korting", nullable = false)
     private double korting;
+
+    @Column(name = "totaal", nullable = false)
     private double totaal;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "factuur_factuurregel", joinColumns = @JoinColumn(name = "factuur_id"),
+            inverseJoinColumns = @JoinColumn(name = "factuurregel_id"))
     private List<FactuurRegel> regels;
+
 
     public Factuur() {
         totaal = 0;
         korting = 0;
-        regels = new ArrayList<>();
     }
 
     public Factuur(Dienblad klant, LocalDate datum) {
         this();
         this.datum = datum;
-
+        regels = new ArrayList<>();
         verwerkBestelling(klant);
 }
 
@@ -38,23 +55,15 @@ private void verwerkBestelling(Dienblad klant) {
     double totaalPrijsArtikelen = 0.0d;
     Persoon persoon = klant.getKlant();
 
-    for (int y =0; y < klant.getAantalArtikelen();) {
-        Artikel a = klant.artikelen.get(y);
-        if (a.getNaam().equals(KantineSimulatie_2.dagAanbieding)) {
-            a.setKorting(a.getPrijs() / 100.0d * KantineSimulatie_2.KORTINGS_PERCENTAGE);
-            double nieuwePrijs = a.getPrijs() - a.getKorting();
-            a.setPrijs(nieuwePrijs);
-            System.out.println(a.getNaam() + ": " + String.format("€%.2f", a.getPrijs()));
-        }
-        y++;
-    }
+    System.out.println(datum);
+
     // Bereken de totaalprijs van de artikelen
     while (artikel.hasNext()) {
         Artikel a = artikel.next();
         totaalPrijsArtikelen += a.getPrijs();
         kortingDagaanbiedingen += a.getKorting();
         // Voeg factuurregel toe
-        //regels.add(new FactuurRegel(this, a));
+        regels.add(new FactuurRegel(this, a));
     }
 
     // Check voor korting en bereken de korting
@@ -65,8 +74,8 @@ private void verwerkBestelling(Dienblad klant) {
             korting = ((KortingskaartHouder) persoon).geefMaximum();
         }
     }
-    korting += kortingDagaanbiedingen;
-    totaal = totaalPrijsArtikelen;
+    korting += Math.round(kortingDagaanbiedingen);
+    totaal = Math.round(totaalPrijsArtikelen);
 }
 
 /*

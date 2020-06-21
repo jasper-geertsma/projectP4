@@ -3,9 +3,16 @@ public class Artikel {
     private double prijs;
     private double korting;
 
+    public Artikel(String naam, double prijs, double korting) {
+        this.naam = naam;
+        this.prijs = prijs;
+        this.korting = korting;
+    }
+
     public Artikel(String naam, double prijs) {
         this.naam = naam;
         this.prijs = prijs;
+        korting = 0.0d;
     }
 
     public Artikel(){
@@ -41,4 +48,9 @@ public class Artikel {
     }
 
     public void setKorting(double korting) {this.korting = korting;}
+
+    @Override
+    public String toString() {
+        return String.format("Naam: %s, prijs: %f", naam, prijs);
+    }
 }

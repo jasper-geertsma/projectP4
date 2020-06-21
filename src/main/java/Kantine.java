@@ -1,15 +1,18 @@
+import javax.persistence.EntityManager;
+
 public class Kantine {
-    private Kassa kassa;
-    private KassaRij kassarij;
+    private final Kassa kassa;
+    private final KassaRij kassarij;
     private KantineAanbod kantineAanbod;
+    private EntityManager manager;
 
     /**
      * Constructor
      */
-    public Kantine() {
+    public Kantine(EntityManager manager) {
         kassarij = new KassaRij();
-        kassa = new Kassa(kassarij);
-
+        kassa = new Kassa(kassarij, manager);
+        this.manager = manager;
     }
 
     /**
@@ -45,5 +48,9 @@ public class Kantine {
 
     public KantineAanbod getKantineAanbod() {
         return kantineAanbod;
+    }
+
+    public void setDagAanbieding(String dagAanbieding) {
+        kantineAanbod.setDagAanbieding(dagAanbieding);
     }
 }

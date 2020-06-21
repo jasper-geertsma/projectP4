@@ -8,8 +8,8 @@
 public class Student extends Persoon
 {
     // instance variables - vervang deze door jouw variabelen
-    private int studentNummer;
-    private String studieRichting;
+    private final int studentNummer;
+    private final String studieRichting;
 
     /**
      * Constructor voor objects van class Student

@@ -1,3 +1,6 @@
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import java.time.LocalDate;
 import java.util.Iterator;
 
 public class Kassa {
@@ -6,12 +9,14 @@ public class Kassa {
     private double totaalGeld;
     private final KassaRij kassarij;
     private Artikel artikel;
+    private EntityManager manager;
 
     /**
      * Constructor
      */
-    public Kassa(KassaRij kassarij) {
+    public Kassa(KassaRij kassarij, EntityManager manager) {
         this.kassarij = kassarij;
+        this.manager = manager;
     }
 
     /**
@@ -22,18 +27,43 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
-        Factuur factuur = new Factuur();
+        Factuur factuur = new Factuur(klant, LocalDate.now().plusDays(KantineSimulatie_2.huidige_dag));
         Persoon persoon = klant.getKlant();
+
+        // Print uit hoe de klant gaat betalen
+        if (persoon.getBetaalwijze() instanceof Contant) {
+            System.out.println("De klant wil contant afrekenen.");
+        }
+        else {
+            System.out.println("De klant wil met de pinpas afrekenen.");
+        }
+
+        Iterator<Artikel> artikelen = klant.getIterator();
+        while (artikelen.hasNext()){
+            Artikel a = artikelen.next();
+            totaalProducten++;
+        }
+
+        kassarij.afgerondeKlant(klant);
         double totaalBedrag = factuur.getTotaal() - factuur.getKorting();
+
+        EntityTransaction transaction = null;
          if(persoon.getBetaalwijze() != null) {
              try{
+                 transaction = manager.getTransaction();
+                 transaction.begin();
+
                  persoon.getBetaalwijze().betaal(totaalBedrag);
 
-                 totaalProducten += totaalArtikelenDienblad(klant);
-                 totaalGeld += totaalPrijsDienblad(klant);
-                 System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " heeft betaald.");
+                 totaalGeld += totaalBedrag;
+                 manager.persist(factuur);
+                 transaction.commit();
+                 //System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " heeft betaald.");
              }
              catch(TeWeinigGeldException e){
+                 if (transaction != null) {
+                     transaction.rollback();
+                 }
                  System.out.println(persoon.getVoornaam() + " " + persoon.getAchternaam() + " Heeft niet genoeg geld");
              }
 
@@ -73,42 +103,6 @@ public class Kassa {
     public void resetKassa() {
         totaalGeld = 0;
         totaalProducten = 0;
-    }
-
-    public int totaalArtikelenDienblad(Dienblad dienblad){
-        int totaal = 0;
-        if (dienblad.getIterator() == null) {
-            System.out.println("Het dienblad is leeg");
-            return totaal;
-        }
-
-        else{
-            Iterator<Artikel> it = dienblad.getIterator();
-            while (it.hasNext()) {
-                it.next();
-                totaal++;
-            }
-            return totaal;
-        }
-
-    }
-
-    public double totaalPrijsDienblad(Dienblad dienblad){
-        double totaal = 0.0;
-        if (dienblad.getIterator() == null) {
-            System.out.println("Het dienblad is leeg");
-            return totaal;
-        }
-
-        else{
-            Iterator<Artikel> it = dienblad.getIterator();
-            while (it.hasNext()) {
-                artikel = it.next();
-                totaal += artikel.getPrijs();
-            }
-            return totaal;
-        }
-        
     }
     
     
