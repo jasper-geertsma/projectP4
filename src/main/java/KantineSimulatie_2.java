@@ -19,13 +19,13 @@ public class KantineSimulatie_2 {
     // random generator
     private Random random;
 
-    private String dagAanbieding;
+    protected String dagAanbieding;
 
     // aantal artikelen
     private static final int AANTAL_ARTIKELEN = 4;
 
     // Kortings percentage
-    private static final double KORTINGS_PERCENTAGE = 20.0d;
+    protected static final double KORTINGS_PERCENTAGE = 20.0d;
 
     // artikelen
     private static final String[] artikelnamen =
@@ -217,6 +217,7 @@ public class KantineSimulatie_2 {
         manager.close();
         ENTITY_MANAGER_FACTORY.close();
     }
+
 
     public static void main(String[] args) {
 

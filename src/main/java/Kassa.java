@@ -22,11 +22,12 @@ public class Kassa {
      * @param klant die moet afrekenen
      */
     public void rekenAf(Dienblad klant) {
+        Factuur factuur = new Factuur();
         Persoon persoon = klant.getKlant();
-
+        double totaalBedrag = factuur.getTotaal() - factuur.getKorting();
          if(persoon.getBetaalwijze() != null) {
              try{
-                 persoon.getBetaalwijze().betaal(teBetalen);
+                 persoon.getBetaalwijze().betaal(totaalBedrag);
 
                  totaalProducten += totaalArtikelenDienblad(klant);
                  totaalGeld += totaalPrijsDienblad(klant);
