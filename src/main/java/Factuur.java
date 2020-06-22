@@ -74,12 +74,12 @@ private void verwerkBestelling(Dienblad klant) {
             korting = ((KortingskaartHouder) persoon).geefMaximum();
         }
     }
-    korting += Math.round(kortingDagaanbiedingen);
-    totaal = Math.round(totaalPrijsArtikelen);
+    korting += Math.round((kortingDagaanbiedingen * 100) / 100);
+    totaal = Math.round((totaalPrijsArtikelen * 100) / 100);
 }
 
 /*
-    * @return het totaalbedrag
+ * @return het totaalbedrag
  */
 public double getTotaal() {
     return totaal;

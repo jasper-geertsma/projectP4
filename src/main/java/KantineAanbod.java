@@ -4,9 +4,9 @@ public class KantineAanbod {
     // Kortings percentage
     private static final double KORTINGS_PERCENTAGE = 20.0d;
     // interne opslag voorraad
-    private HashMap<String, ArrayList<Artikel>> aanbod;
-    private HashMap<String, Integer> startVoorraad;
-    private HashMap<String, Double> prijzen;
+    private final HashMap<String, ArrayList<Artikel>> aanbod;
+    private final HashMap<String, Integer> startVoorraad;
+    private final HashMap<String, Double> prijzen;
     private String dagAanbieding;
 
     /**

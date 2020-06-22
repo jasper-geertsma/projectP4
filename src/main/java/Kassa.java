@@ -9,7 +9,7 @@ public class Kassa {
     private double totaalGeld;
     private final KassaRij kassarij;
     private Artikel artikel;
-    private EntityManager manager;
+    private final EntityManager manager;
 
     /**
      * Constructor

@@ -9,7 +9,7 @@ import javax.persistence.Query;
 public class KantineSimulatie_2 {
 
     private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("KantineSimulatie");
-    private EntityManager manager;
+    private final EntityManager manager;
 
     // kantine
     private final Kantine kantine;
